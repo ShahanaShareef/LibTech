@@ -9,6 +9,15 @@ public class RequestModel {
     private String bookName;
     private String userName;
     private String status;
+    private String mobile;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getStatus() {
         return status;

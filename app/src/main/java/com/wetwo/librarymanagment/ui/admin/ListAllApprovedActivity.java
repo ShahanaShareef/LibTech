@@ -109,6 +109,7 @@ public class ListAllApprovedActivity extends BaseActivity implements OnClickList
                                     model.setBookName(Objects.requireNonNull(documentSnapshot.get("bookName")).toString());
                                     model.setUserName(Objects.requireNonNull(documentSnapshot.get("userName")).toString());
                                     model.setStatus(Objects.requireNonNull(documentSnapshot.get("status")).toString());
+                                    model.setMobile(Objects.requireNonNull(documentSnapshot.get("mobile")).toString());
 
                                     if (model.getStatus().equals("approved")) {
                                         requestModelList.add(model);
@@ -237,14 +238,14 @@ public class ListAllApprovedActivity extends BaseActivity implements OnClickList
     @Override
     public void onClickReturnRequestListener(int position) {
         RequestModel model = requestModelList.get(position);
-        sendMessage(model, sessionManager.getMobile());
+        sendMessage(model);
     }
 
-    private void sendMessage(RequestModel model, String mobile) {
+    private void sendMessage(RequestModel model) {
         if (messagePermission) {
             try {
                 SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(mobile, null, "This is from Lib-Tech. Please return your book named:" + model.getBookName() + "\n Thanks", null, null);
+                smsManager.sendTextMessage(model.getMobile(), null, "This is from Lib-Tech. Please return your book named:" + model.getBookName() + "\n Thanks", null, null);
                 Toast.makeText(getApplicationContext(), "Message Sent",
                         Toast.LENGTH_LONG).show();
             } catch (Exception ex) {

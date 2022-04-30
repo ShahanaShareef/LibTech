@@ -254,6 +254,7 @@ public class ListBooksActivity extends BaseActivity implements OnClickListener, 
             user.put("bookName", uploadInfo.getBookName());
             user.put("userName", sessionManager.getUserName());
             user.put("bookIdR", uploadInfo.getBookID());
+            user.put("mobile", sessionManager.getMobile());
             user.put("status", "request");
 
 
